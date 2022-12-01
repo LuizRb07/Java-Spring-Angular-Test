@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>Confirmação</h1>
+<div mat-dialog-content>{{dataAsk}}</div>
+<div mat-dialog-actions align="center">
+  <button mat-button color="warn" (click)="onConfirm(true)">Sim</button>
+  <button mat-button cdkFocusInitial (click)="onConfirm(false)">Não</button>
+</div>
