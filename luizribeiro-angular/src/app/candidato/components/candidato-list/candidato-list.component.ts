@@ -25,7 +25,7 @@ export class CandidatoListComponent {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     var c : any = this.candidato[0];
-    if (c['candidatos']) {
+    if (c && c['candidatos']) {
       this.displayedColumns.length = 0;
       const $c = this.candidato[0];
       if (c['estado'])

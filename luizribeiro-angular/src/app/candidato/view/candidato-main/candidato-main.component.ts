@@ -31,26 +31,27 @@ export class CandidatoMainComponent {
   updateTable(by: String) {
     if (by == "Todos")
       this.candidato$ = this.candidatoService.list()
+      .pipe(catchError(e=>{this.onError(null); return of([])}));
     else if (by == "Estado")
       this.candidato$ = this.candidatoService.listGroupByEstado()
+      .pipe(catchError(e=>{this.onError(null); return of([])}));
     else if (by == "FaixaEtaria")
       this.candidato$ = this.candidatoService.listGroupByFaixaEtaria()
+      .pipe(catchError(e=>{this.onError(null); return of([])}));
     else if (by == "Genero")
       this.candidato$ = this.candidatoService.listGroupByGenero()
+      .pipe(catchError(e=>{this.onError(null); return of([])}));
     else if (by == "Sangue")
       this.candidato$ = this.candidatoService.listGroupBySangue()
+      .pipe(catchError(e=>{this.onError(null); return of([])}));
     else if (by == "Receptor")
       this.candidato$ = this.candidatoService.listGroupByReceptor()
-    this.candidato$?.pipe(
-      catchError(error => {
-          this.onError("Falha ao carregar lista de candidatos.");
-          return of([])
-        }
-      )
-    );
+      .pipe(catchError(e=>{this.onError(null); return of([])}));
   }
 
-  onError(errorMsg: String) {
+  onError(errorMsg: String | null) {
+    if (!errorMsg)
+      errorMsg = "Falha ao carregar lista de candidatos.";
     this.dialog.open(ErrorDialogComponent, {data: errorMsg});
   }
 
