@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,9 @@ public class CandidatoController {
 
     @GetMapping
     public @ResponseBody List<Candidato> list() {
-        return candidatoRepository.findAll();
+        return candidatoRepository.findAll(
+            Sort.by(Sort.Direction.ASC, "nome")
+        );
     }
 
     @GetMapping("/GroupByEstado")
@@ -48,9 +51,14 @@ public class CandidatoController {
         return candidatoRepository.findAllGroupByGenero();
     }
 
-    @GetMapping("/GroupBySangue")
+    @GetMapping("/GroupBySanguineo")
     public @ResponseBody List<CandidatoInterface> listGroupBySangue() {
-        return candidatoRepository.findAllGroupBySangue();
+        return candidatoRepository.findAllGroupBySanguineo();
+    }
+
+    @GetMapping("/GroupByReceptor")
+    public @ResponseBody List<CandidatoInterface> listGroupByReceptor() {
+        return candidatoRepository.findAllGroupByReceptor();
     }
 
     @GetMapping("/{id}")
@@ -76,7 +84,7 @@ public class CandidatoController {
                 recordFound.setNome(candidato.getNome());
                 recordFound.setCpf(candidato.getCpf());
                 recordFound.setRg(candidato.getRg());
-                recordFound.setNascimento(candidato.getNascimento());
+                recordFound.setData_nasc(candidato.getData_nasc());
                 recordFound.setSexo(candidato.getSexo());
                 recordFound.setMae(candidato.getMae());
                 recordFound.setPai(candidato.getPai());
@@ -87,11 +95,11 @@ public class CandidatoController {
                 recordFound.setBairro(candidato.getBairro());
                 recordFound.setCidade(candidato.getCidade());
                 recordFound.setEstado(candidato.getEstado());
-                recordFound.setTelefone(candidato.getTelefone());
+                recordFound.setTelefone_fixo(candidato.getTelefone_fixo());
                 recordFound.setCelular(candidato.getCelular());
                 recordFound.setAltura(candidato.getAltura());
                 recordFound.setPeso(candidato.getPeso());
-                recordFound.setSangue(candidato.getSangue());
+                recordFound.setTipo_sanguineo(candidato.getTipo_sanguineo());
                 Candidato updated = candidatoRepository.save(recordFound);
                 return ResponseEntity.ok().body(updated);
             })

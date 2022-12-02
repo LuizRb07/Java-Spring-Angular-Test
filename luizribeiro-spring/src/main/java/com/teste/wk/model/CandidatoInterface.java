@@ -2,12 +2,13 @@ package com.teste.wk.model;
 
 public interface CandidatoInterface {
     String getSexo();
-    String getSangue();
+    String getTipo_sanguineo();
     String getEstado();
-    String getFaixaetaria();
+    String getFaixa_etaria();
     Integer getCandidatos();
+    Integer getDoadores();
     Integer getObesidade();
-    Integer getIdadeMedia();
-    Float getObesidadeperc();
-    Float getImcMedio();
+    Integer getMedia_idade();
+    Float getObesidade_perc();
+    Float getMedia_imc();
 }

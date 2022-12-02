@@ -25,13 +25,16 @@ export class CandidatoService {
     return this.httpClient.get<Candidato[]>(`${this.API}/GroupByGenero`).pipe(first(), delay(0));
   }
   public listGroupBySangue() {
-    return this.httpClient.get<Candidato[]>(`${this.API}/GroupBySangue`).pipe(first(), delay(0));
+    return this.httpClient.get<Candidato[]>(`${this.API}/GroupBySanguineo`).pipe(first(), delay(0));
   }
-  public loadById(id: Number) {
-    return this.httpClient.get<Candidato>(`${this.API}/${id}`);
+  public listGroupByReceptor() {
+    return this.httpClient.get<Candidato[]>(`${this.API}/GroupByReceptor`).pipe(first(), delay(0));
+  }
+  public loadById(id: string) {
+    return this.httpClient.get<Candidato>(`${this.API}/${Number(id)}`);
   }
 
-  public remove(id: Number) {
+  public remove(id: string) {
     return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 

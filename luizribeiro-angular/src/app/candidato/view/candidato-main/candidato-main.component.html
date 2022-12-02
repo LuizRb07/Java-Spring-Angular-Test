@@ -2,31 +2,34 @@
   <mat-toolbar color="primary">
     <span>Lista de Candidatos</span>
     <span class="spacer"></span>
-    <button mat-icon-button aria-label="Novo candidato" onclick="onAdd()">
+    <button mat-icon-button (Click)="onAdd();" aria-label="Novo">
       <mat-icon>add</mat-icon>
     </button>
     <button mat-icon-button [matMenuTriggerFor]="menuFilter" aria-label="Filtro">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menuFilter="matMenu">
-      <button mat-menu-item (click)="onFilter('list-all')" disabled>
+      <button mat-menu-item (click)="updateTable('Todos')">
         <span>Todos Candidatos</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="updateTable('Estado')">
         <span>Candidatos por Estado</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="updateTable('FaixaEtaria')">
         <span>IMC por Faixa Etária</span>
       </button>
-      <button mat-menu-item>
-        <span>Percentual de Obesidade</span>
+      <button mat-menu-item (click)="updateTable('Genero')">
+        <span>Perc. Obesidade por Gênero</span>
       </button>
-      <button mat-menu-item>
-        <span>Idade média por Tipo Sanguíneo</span>
+      <button mat-menu-item (click)="updateTable('Sangue')">
+        <span>Média Idade por T. Sanguíneo</span>
+      </button>
+      <button mat-menu-item (click)="updateTable('Receptor')">
+        <span>Doadores por T. Sanguíneo</span>
       </button>
     </mat-menu>
   </mat-toolbar>
-  <div>
+  <div class="mat-elevation-z8">
     <app-candidato-list
       *ngIf="candidato$ | async as candidato; else loading"
       [candidato]="candidato"

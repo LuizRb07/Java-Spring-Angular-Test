@@ -1,8 +1,12 @@
 mat-table {
   overflow: auto;
-  max-height: 600px;
+}
+
+th, td {
+  width: auto;
 }
 .mat-column-actions  {
-  width: 130px;
+  width: auto;
+  max-width: 130px;
   text-align: center;
 }

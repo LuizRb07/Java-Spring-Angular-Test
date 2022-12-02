@@ -1,4 +1,10 @@
-<table mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource" matSort>
+  <!-- Nome Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.id}}</td>
+  </ng-container>
+
   <!-- Nome Column -->
   <ng-container matColumnDef="nome">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
@@ -21,17 +27,95 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Ações</th>
     <td mat-cell *matCellDef="let candidato">
-      <button mat-icon-button color="primary" aria-label="Editar" (click)="onEdit(candidato)">
+      <button
+        mat-icon-button
+        color="primary"
+        aria-label="Editar"
+        (click)="onEdit(candidato)"
+      >
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" aria-label="Deletar" (click)="onDelete(candidato)">
+      <button
+        mat-icon-button
+        color="warn"
+        aria-label="Deletar"
+        (click)="onDelete(candidato)"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </td>
   </ng-container>
 
+  <!--GroupBY-->
+  <!-- Candidatos Column -->
+  <ng-container matColumnDef="candidatos">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Candidatos</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.candidatos}}</td>
+  </ng-container>
+
+  <!-- Candidatos Column -->
+  <ng-container matColumnDef="doadores">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Possíveis Doadores</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.doadores}}</td>
+  </ng-container>
+
+  <!-- Estado Column -->
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.estado}}</td>
+  </ng-container>
+
+  <!-- FaixaEtaria Column -->
+  <ng-container matColumnDef="faixa_etaria">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Faixa Etária</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.faixa_etaria}}</td>
+  </ng-container>
+
+  <!-- ImcMedio Column -->
+  <ng-container matColumnDef="media_imc">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Média de IMC</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.media_imc}}</td>
+  </ng-container>
+
+  <!-- Obesidade Column -->
+  <ng-container matColumnDef="obesidade">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Obesidade</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.obesidade}}</td>
+  </ng-container>
+
+  <!-- ObesidadePerc Column -->
+  <ng-container matColumnDef="obesidade_perc" class="col_obs_perc">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Obesidade Percentual
+    </th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.obesidade_perc}}%</td>
+  </ng-container>
+
+  <!-- Sexo Column -->
+  <ng-container matColumnDef="sexo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Gênero</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.sexo}}</td>
+  </ng-container>
+
+  <!-- Sangue Column -->
+  <ng-container matColumnDef="tipo_sanguineo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Sanguíneo</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.tipo_sanguineo}}</td>
+  </ng-container>
+
+  <!-- Sangue Column -->
+  <ng-container matColumnDef="media_idade">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Média de Idade</th>
+    <td mat-cell *matCellDef="let candidato">{{candidato.media_idade}}</td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 300]" showFirstLastButtons aria-label="Lista ordenada">
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20, 50, 300]"
+  showFirstLastButtons
+  aria-label="Lista ordenada"
+>
 </mat-paginator>

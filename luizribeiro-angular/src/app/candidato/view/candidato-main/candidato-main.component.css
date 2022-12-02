@@ -1,5 +1,6 @@
 mat-card {
-  max-width: 80%;
+  max-width: 1000px;
+  width: 95%;
   margin: 2em auto;
   text-align: center;
 }
@@ -11,7 +12,6 @@ mat-card {
 .column-flex {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
 }
 
 .loading-spinner {

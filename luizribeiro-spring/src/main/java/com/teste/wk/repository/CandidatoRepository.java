@@ -14,12 +14,15 @@ public interface CandidatoRepository extends JpaRepository<Candidato, Long> {
     @Query(value = "SELECT * FROM vwCandidato_group_estado", nativeQuery = true)
     List<CandidatoInterface> findAllGroupByEstado();
 
-    @Query(value = "SELECT * FROM vwCandidato_group_faixaEtaria", nativeQuery = true)
+    @Query(value = "SELECT * FROM vwCandidato_group_faixa_etaria", nativeQuery = true)
     List<CandidatoInterface> findAllGroupByFaixaEtaria();
 
     @Query(value = "SELECT * FROM vwCandidato_group_genero", nativeQuery = true)
     List<CandidatoInterface> findAllGroupByGenero();
 
-    @Query(value = "SELECT * FROM vwCandidato_group_sangue", nativeQuery = true)
-    List<CandidatoInterface> findAllGroupBySangue();
+    @Query(value = "SELECT * FROM vwCandidato_group_tipo_sanguineo", nativeQuery = true)
+    List<CandidatoInterface> findAllGroupBySanguineo();
+
+    @Query(value = "SELECT * FROM vwCandidato_group_receptor", nativeQuery = true)
+    List<CandidatoInterface> findAllGroupByReceptor();
 }

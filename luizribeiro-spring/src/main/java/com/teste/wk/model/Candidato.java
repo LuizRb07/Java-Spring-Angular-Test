@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_candidato")
+@Table(name="tb_candidato")
 public class Candidato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +32,10 @@ public class Candidato {
 	@Column(length = 12, unique = true, nullable = false)
 	private String rg;
 	
-	@JsonProperty("data_nasc")
 	@JsonFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private Date nascimento;
+	private Date data_nasc;
 	
 	@Column(length = 9, nullable = false)
 	private String sexo;
@@ -68,9 +67,8 @@ public class Candidato {
 	@Column(length = 2, nullable = false)
 	private String estado;
 	
-	@JsonProperty("telefone_fixo")
 	@Column(length = 14)
-	private String telefone;
+	private String telefone_fixo;
 	
 	@Column(length = 15, unique = true, nullable = false)
 	private String celular;
@@ -81,7 +79,6 @@ public class Candidato {
 	@Column(columnDefinition = "SMALLINT", nullable = false)
 	private Short peso;
 	
-	@JsonProperty("tipo_sanguineo")
 	@Column(length = 3, nullable = false)
-	private String  sangue;
+	private String  tipo_sanguineo;
 }
